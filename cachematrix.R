@@ -40,14 +40,16 @@ cacheSolve <- function(x, ...) {
   #try to obtain the inverse of x from x
   inverse <- x$getInverse()
   # if inverse is not null return it from x
-  if(!is.null(inverse)) {
+  theInverse <- if(!is.null(inverse)) {
     message("getting cached data")
-    ## Return a matrix that is the inverse of 'x'
-    return(inverse)
+    ## set theInverse to the inverse of 'x'
+    inverse
   }
   else{  #create the inverse and set x's inverse to the result of solve of x
     inverse$setInverse(solve(x))
     ## Return a matrix that is the inverse of 'x'
-    return inverse$getInverse()
+    inverse$getInverse()
   }
+  #return theInverse
+  theInverse
 }
